@@ -1,0 +1,10 @@
+test/
+app/
+Chat Exporter.app/
+*.mcpb
+.DS_Store
+.mcpbignore
+README.md
+install.sh
+uninstall.sh
+_probe*

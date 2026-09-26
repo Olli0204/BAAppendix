@@ -1,0 +1,33 @@
+{
+  "sessions": {
+    "aaaa1111-2222-3333-4444-555566667777": {
+      "id": "aaaa1111-2222-3333-4444-555566667777",
+      "project": "BA-Projekt",
+      "title": "ALPS Grundlagen Session",
+      "date": "2026-08-01",
+      "messages": 6,
+      "files": [
+        "/Users/oliverkamps/Documents/BA/claude-chat-exporter/test/out/Claude-Sessions/BA-Projekt/2026-08-01_alps-grundlagen-session_aaaa1111.pdf"
+      ],
+      "format": "pdf",
+      "tools": true,
+      "mtimeMs": 1789904534472,
+      "size": 3373
+    },
+    "bbbb8888-9999-0000-1111-222233334444": {
+      "id": "bbbb8888-9999-0000-1111-222233334444",
+      "project": "BA-Projekt",
+      "title": "Agent-Name als Titel",
+      "date": "2026-07-01",
+      "messages": 1,
+      "files": [
+        "/Users/oliverkamps/Documents/BA/claude-chat-exporter/test/out/Claude-Sessions/BA-Projekt/2026-07-01_agent-name-als-titel_bbbb8888.pdf"
+      ],
+      "format": "pdf",
+      "tools": true,
+      "mtimeMs": 1782896400000,
+      "size": 231
+    }
+  },
+  "updated": "2026-09-20T11:42:14.781Z"
+}

@@ -1,0 +1,92 @@
+{
+  "manifest_version": "0.3",
+  "name": "claude-chat-exporter",
+  "display_name": "Chat Exporter",
+  "version": "1.2.0",
+  "description": "Exportiert Claude-Chats und Claude-Code-Sessions als Markdown, HTML oder PDF.",
+  "long_description": "Speichert Claude-Chats als schön formatierte Dateien auf deinem Mac – pro Chat, auf Zuruf.\n\n**Nutzung:** Schreibe in einem beliebigen Chat einfach „Exportiere diesen Chat als PDF\" (oder Markdown/HTML), oder verwende den mitgelieferten Prompt „Diesen Chat exportieren\" aus dem +-Menü.\n\n- Formate: Markdown (.md, Standard), HTML (.html, gestylt & druckbar), PDF (.pdf)\n- Zielordner frei wählbar (Standard: Downloads)\n- **Claude-Code-Sessions verlustfrei exportieren**, egal wie lang: „Liste meine Claude-Code-Sessions\" → „Exportiere Session … als PDF\" (liest das vollständige lokale Transkript aus ~/.claude/projects) – oder „Exportiere alle Sessions als Markdown\" für die komplette Dokumentation mit INDEX.md\n- Läuft komplett lokal, keine Cloud, keine Zugangsdaten\n\n**Hinweis:** Beim Export des aktuellen Chats wird der Verlauf exportiert, den Claude im Kontext hat; bei sehr langen Chats greift automatisch ein mehrstufiger Export. Für Claude-Code-Sessions ist der Export über das lokale Transkript immer vollständig.",
+  "author": {
+    "name": "Oliver Kamps"
+  },
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "EXPORT_DIR": "${user_config.export_directory}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "export_chat",
+      "description": "Exportiert den aktuellen Chat als Markdown, HTML und/oder PDF."
+    },
+    {
+      "name": "begin_export",
+      "description": "Startet einen mehrstufigen Export für sehr lange Chats."
+    },
+    {
+      "name": "append_messages",
+      "description": "Hängt weitere Nachrichten an einen laufenden Export an."
+    },
+    {
+      "name": "finalize_export",
+      "description": "Schließt einen mehrstufigen Export ab und speichert die Datei(en)."
+    },
+    {
+      "name": "list_sessions",
+      "description": "Listet lokal gespeicherte Claude-Code-Session-Transkripte auf."
+    },
+    {
+      "name": "export_session",
+      "description": "Exportiert eine Claude-Code-Session verlustfrei aus dem lokalen Transkript – beliebig lang."
+    },
+    {
+      "name": "export_all_sessions",
+      "description": "Exportiert alle lokalen Claude-Code-Sessions auf einmal (Unterordner pro Projekt, INDEX.md) – für die nachträgliche Dokumentation."
+    }
+  ],
+  "prompts": [
+    {
+      "name": "export-this-chat",
+      "description": "Diesen Chat als Markdown, PDF oder HTML exportieren",
+      "arguments": [
+        "format"
+      ],
+      "text": "Bitte exportiere diesen gesamten Chatverlauf als ${arguments.format} (Standard: Markdown). Übergib den vollständigen Verlauf wortgetreu und ungekürzt an das Export-Tool (bei sehr langen Chats nutze begin_export → append_messages → finalize_export). Nenne mir am Ende den Dateipfad der exportierten Datei."
+    }
+  ],
+  "keywords": [
+    "export",
+    "pdf",
+    "markdown",
+    "html",
+    "chat",
+    "backup"
+  ],
+  "license": "MIT",
+  "user_config": {
+    "export_directory": {
+      "type": "directory",
+      "title": "Export-Ordner",
+      "description": "Ordner, in dem exportierte Chats gespeichert werden",
+      "default": "${DOWNLOADS}",
+      "required": false
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

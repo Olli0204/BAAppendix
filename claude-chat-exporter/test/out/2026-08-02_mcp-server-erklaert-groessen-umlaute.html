@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP-Server erklärt – Größen &amp; Umlaute</title>
+<style>
+  :root {
+    --text: #1f1e1d; --muted: #6e6a65; --bg: #faf9f7; --card: #ffffff;
+    --border: #e8e4de; --user: #1a56db; --assistant: #c15f3c;
+    --code-bg: #f4f3f0; --code-border: #e5e2dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px; line-height: 1.6;
+  }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  header h1 { font-size: 26px; margin: 0 0 6px; }
+  header .meta { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
+  .msg {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 22px; margin-bottom: 16px;
+  }
+  .msg.user { border-left: 3px solid var(--user); }
+  .msg.assistant { border-left: 3px solid var(--assistant); }
+  .role {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .msg.user .role { color: var(--user); }
+  .msg.assistant .role { color: var(--assistant); }
+  .content > :first-child { margin-top: 0; }
+  .content > :last-child { margin-bottom: 0; }
+  .content pre {
+    background: var(--code-bg); border: 1px solid var(--code-border); border-radius: 8px;
+    padding: 12px 14px; overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+    font-size: 13px; line-height: 1.5;
+  }
+  .content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em; background: var(--code-bg); border-radius: 4px; padding: 1px 5px;
+  }
+  .content pre code { background: none; padding: 0; }
+  .content blockquote {
+    margin: 0.8em 0; padding: 2px 16px; border-left: 3px solid var(--border);
+    color: var(--muted);
+  }
+  .content table { border-collapse: collapse; margin: 0.8em 0; }
+  .content th, .content td { border: 1px solid var(--border); padding: 6px 12px; text-align: left; }
+  .content th { background: var(--code-bg); }
+  .content img { max-width: 100%; }
+  .content a { color: var(--user); }
+  footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 32px; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .msg { break-inside: avoid; box-shadow: none; }
+    .content pre { white-space: pre-wrap; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>MCP-Server erklärt – Größen &amp; Umlaute</h1>
+  <div class="meta">Exportiert aus Claude Desktop · 2. August 2026 um 20:15 · 4 Nachrichten</div>
+</header>
+<section class="msg user">
+  <div class="role">Du</div>
+  <div class="content"><p>Hallo Claude! Kannst du mir <strong>kurz</strong> erklären, was ein MCP-Server ist? Bitte mit Beispiel für Größenordnungen: ä ö ü ß – und einem Emoji-Test 🚀✨</p>
+</div>
+</section>
+<section class="msg assistant">
+  <div class="role">Claude</div>
+  <div class="content"><p>Gerne! Ein <strong>MCP-Server</strong> (Model Context Protocol) stellt Claude <em>Tools</em> bereit.</p>
+<h2>Wichtige Punkte</h2>
+<ol>
+<li>Läuft lokal über <code>stdio</code></li>
+<li>Bietet Tools, Prompts und Ressourcen an</li>
+<li>Wird z. B. als <code>.mcpb</code>-Datei installiert</li>
+</ol>
+<h3>Beispiel-Code</h3>
+<pre><code class="language-javascript">import { McpServer } from &quot;@modelcontextprotocol/sdk/server/mcp.js&quot;;
+
+const server = new McpServer({ name: &quot;demo&quot;, version: &quot;1.0.0&quot; });
+// Ein sehr langer Kommentar, der testet, wie der PDF-Renderer mit Zeilenumbrüchen in Code-Blöcken umgeht, wenn die Zeile deutlich breiter ist als die Seite.
+server.registerTool(&quot;greet&quot;, { description: &quot;Sagt Hallo&quot; }, async () =&gt; {
+  return { content: [{ type: &quot;text&quot;, text: &quot;Hallo Welt! Umlaute: äöüß&quot; }] };
+});
+</code></pre>
+<blockquote>
+<p><strong>Merke:</strong> Der Server hat keinen Zugriff auf &lt;div&gt;-HTML oder den Chatverlauf – Claude übergibt Daten explizit.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>Eindeutiger Name</td>
+</tr>
+<tr>
+<td>version</td>
+<td>Semver-Version</td>
+</tr>
+</tbody></table>
+<p>Mehr dazu unter <a href="https://modelcontextprotocol.io">modelcontextprotocol.io</a>. Inline-Code: <code>const x = a &lt; b &amp;&amp; c &gt; d;</code></p>
+<ul>
+<li>Erster Punkt mit einer ziemlich langen Zeile, die im PDF umbrechen muss, damit man sieht, ob hängende Einzüge funktionieren</li>
+<li>Zweiter Punkt<ul>
+<li>Verschachtelt A</li>
+<li>Verschachtelt B</li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> Erledigter Task</li>
+<li><input disabled="" type="checkbox"> Offener Task</li>
+</ul>
+</div>
+</section>
+<section class="msg user">
+  <div class="role">Du</div>
+  <div class="content"><p>Danke! Und wie installiere ich das dann in der Desktop App?</p>
+</div>
+</section>
+<section class="msg assistant">
+  <div class="role">Claude</div>
+  <div class="content"><p>Ganz einfach:</p>
+<ol>
+<li><code>.mcpb</code>-Datei doppelklicken</li>
+<li>Installation bestätigen</li>
+<li>Fertig – die Tools stehen in jedem Chat bereit</li>
+</ol>
+<hr>
+<p>Viel Erfolg! 🎉</p>
+</div>
+</section>
+<footer>Erstellt mit Chat Exporter für Claude Desktop</footer>
+</div>
+</body>
+</html>

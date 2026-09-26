@@ -1,0 +1,19 @@
+{"type":"user","uuid":"u1","isSidechain":false,"timestamp":"2026-08-01T10:00:00.000Z","message":{"role":"user","content":"Erste Frage: Was ist ALPS? Bitte mit Umlauten: äöüß"}}
+{"type":"assistant","uuid":"a1","timestamp":"2026-08-01T10:00:10.000Z","message":{"id":"msg_1","content":[{"type":"thinking","thinking":"geheime Überlegungen, dürfen NICHT im Export landen"},{"type":"text","text":"ALPS ist **eine Methode** zur Prozessmodellierung."},{"type":"tool_use","name":"Bash","id":"t1","input":{"command":"ls -la","description":"Ordner listen"}}]}}
+{"type":"user","uuid":"u2","timestamp":"2026-08-01T10:00:12.000Z","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"t1","content":"GEHEIMES-TOOL-ERGEBNIS darf nicht erscheinen"}]}}
+{"type":"assistant","uuid":"a2","timestamp":"2026-08-01T10:00:20.000Z","message":{"id":"msg_1","content":[{"type":"text","text":"Und hier die Fortsetzung nach dem Tool-Aufruf."}]}}
+{"type":"user","uuid":"u3","isMeta":true,"timestamp":"2026-08-01T10:00:25.000Z","message":{"role":"user","content":[{"type":"document","source":{"type":"base64","media_type":"application/pdf","data":"xxx"}}]}}
+{"type":"user","uuid":"u4","timestamp":"2026-08-01T10:01:00.000Z","message":{"role":"user","content":"Zweite Frage bitte, **fett** formatiert."}}
+{"type":"assistant","uuid":"a3","timestamp":"2026-08-01T10:01:10.000Z","message":{"id":"msg_2","content":[{"type":"text","text":"Antwort zwei mit `Code`."}]}}
+{"type":"assistant","uuid":"a3","timestamp":"2026-08-01T10:01:10.000Z","message":{"id":"msg_2","content":[{"type":"text","text":"Antwort zwei mit `Code`."}]}}
+{"type":"user","uuid":"u5","isCompactSummary":true,"isVisibleInTranscriptOnly":true,"timestamp":"2026-08-01T10:01:15.000Z","message":{"role":"user","content":"KOMPAKT-ZUSAMMENFASSUNG darf nicht erscheinen"}}
+{"type":"user","uuid":"u6","timestamp":"2026-08-01T10:01:16.000Z","message":{"role":"user","content":"<task-notification>TASK-NOTIFICATION darf nicht erscheinen</task-notification>"}}
+{"type":"user","uuid":"u7","timestamp":"2026-08-01T10:01:17.000Z","message":{"role":"user","content":"<command-name>/model</command-name><command-message>model</command-message>"}}
+{"type":"assistant","uuid":"a4","isApiErrorMessage":true,"timestamp":"2026-08-01T10:01:18.000Z","message":{"id":"msg_err","content":[{"type":"text","text":"API-FEHLER darf nicht erscheinen"}]}}
+{"type":"user","uuid":"u8","timestamp":"2026-08-01T10:01:20.000Z","message":{"role":"user","content":[{"type":"text","text":"<system-reminder>REMINDER-INHALT darf nicht erscheinen</system-reminder>\\nDritte Frage nach Reminder"},{"type":"image","source":{"type":"base64","media_type":"image/png","data":"xxx"}}]}}
+{"type":"assistant","uuid":"a5","timestamp":"2026-08-01T10:01:30.000Z","message":{"id":"msg_3","content":[{"type":"fallback","from":{"model":"a"},"to":{"model":"b"}},{"type":"text","text":"Antwort drei."}]}}
+{"type":"ai-title","sessionId":"aaaa1111-2222-3333-4444-555566667777","aiTitle":"ALPS Grundlagen Session"}
+{"type":"agent-name","sessionId":"aaaa1111-2222-3333-4444-555566667777","agentName":"Agent-Name darf nicht Titel sein"}
+{"type":"system","subtype":"hook","timestamp":"2026-08-01T10:01:20.000Z"}
+{"type":"queue-operation","operation":"enqueue","content":"QUEUE-INHALT darf nicht erscheinen"}
+{"type":"last-prompt","lastPrompt":"LAST-PROMPT darf nicht erscheinen"}

@@ -1,0 +1,22 @@
+{
+  "name": "claude-chat-exporter",
+  "version": "1.2.0",
+  "description": "Claude Desktop Extension: exportiert den aktuellen Chat als Markdown, HTML oder PDF",
+  "type": "module",
+  "private": true,
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node test/smoke.js",
+    "pack": "npx -y @anthropic-ai/mcpb pack . claude-chat-exporter.mcpb",
+    "validate": "npx -y @anthropic-ai/mcpb validate manifest.json",
+    "setup": "bash install.sh --rebuild"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "marked": "^18.0.7",
+    "pdfkit": "^0.19.1",
+    "zod": "^4.4.3"
+  }
+}
